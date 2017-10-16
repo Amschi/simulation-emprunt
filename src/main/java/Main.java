@@ -1,9 +1,12 @@
 public class Main {
     public static void main(String[] args) {
 
-    MonthlyPayment monthlyPayment = new MonthlyPayment(50000, 12f, 120);
-    double result = monthlyPayment.calculateMonthlyPayment(50000,12f,120);
+    LoanSimulation monthlyPayment = new LoanSimulation(50000, 12f, 120);
+    double resultMonthlyPayment = monthlyPayment.calculateMonthlyPayment(50000,12f,120);
+    double resultTotalLoan = monthlyPayment.calculateLoanCost(resultMonthlyPayment, 120);
 
-    System.out.println(result);
+    System.out.println("Vos mensualités sont de"+" "+ +resultMonthlyPayment+" "+ "pour un cout total de" +" "+resultTotalLoan);
+    
+    
     }
 }

@@ -1,18 +1,17 @@
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-import org.junit.Before;
 import org.junit.Test;
 
 
 
 
-public class MonthlyPaymentTest {
+public class LoanSimulationTest {
 
     float capital;
     float rate;
     int nbMonths;
 
-    MonthlyPayment monthlyPayment = new MonthlyPayment(capital, rate, nbMonths);
+    LoanSimulation loanSimulation = new LoanSimulation(capital, rate, nbMonths);
 
 
 
@@ -27,7 +26,7 @@ public class MonthlyPaymentTest {
 
 
         //THEN
-        assertThat(monthlyPayment.getCapital()).isEqualTo(capital);
+        assertThat(loanSimulation.getCapital()).isEqualTo(capital);
 
     }
 
@@ -39,7 +38,7 @@ public class MonthlyPaymentTest {
         // WHEN
 
         // THEN
-        assertThat(monthlyPayment.getRate()).isEqualTo(rate);
+        assertThat(loanSimulation.getRate()).isEqualTo(rate);
     }
 
     @Test
@@ -49,7 +48,7 @@ public class MonthlyPaymentTest {
         // WHEN
 
         // THEN
-        assertThat(monthlyPayment.getNbMonths()).isEqualTo(nbMonths);
+        assertThat(loanSimulation.getNbMonths()).isEqualTo(nbMonths);
     }
 
 
@@ -63,7 +62,7 @@ public class MonthlyPaymentTest {
         // WHEN
 
         // THEN
-        assertThat(monthlyPayment.calculateMonthlyPayment(capital,rate,nbMonths)).isEqualTo(result);
+        assertThat(loanSimulation.calculateMonthlyPayment(capital,rate,nbMonths)).isEqualTo(result);
     }
 
     @Test
@@ -76,17 +75,19 @@ public class MonthlyPaymentTest {
         // WHEN
 
         // THEN
-        assertThat(monthlyPayment.calculateMonthlyPayment(capital,rate,nbMonths)).isEqualTo(result);
+        assertThat(loanSimulation.calculateMonthlyPayment(capital,rate,nbMonths)).isEqualTo(result);
     }
 
     @Test
     public void name () {
         // GIVEN
-
+        double monthlyPayment = 1434.71;
+        int nbMonths = 120;
+        double result = 172165.2;
         // WHEN
 
         // THEN
-        assertThat(monthlyPayment.calculateMonthlyPayment(capital,rate,nbMonths)).isEqualTo(result);
+        assertThat(loanSimulation.calculateLoanCost(monthlyPayment, nbMonths)).isEqualTo(result);
     }
 
 

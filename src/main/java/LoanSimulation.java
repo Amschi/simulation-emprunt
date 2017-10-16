@@ -1,13 +1,13 @@
 import java.math.*;
 
-public class MonthlyPayment {
+public class LoanSimulation {
 
 
     private float capital;
     private float rate;
     private int nbMonths;
 
-    public MonthlyPayment (float capital, float rate, int nbMonths) {
+    public LoanSimulation(float capital, float rate, int nbMonths) {
             this.capital = capital;
             this.rate = rate;
             this.nbMonths = nbMonths;
@@ -37,4 +37,7 @@ public class MonthlyPayment {
     }
 
 
+    public double calculateLoanCost(double monthlyPayment, int nbMonths) {
+        return monthlyPayment * nbMonths;
+    }
 }
