@@ -3,9 +3,9 @@ import java.math.*;
 public class MonthlyPayment {
 
 
-    private float capital = 100000;
-    private float rate = 12f;
-    private int nbMonths = 120;
+    private float capital;
+    private float rate;
+    private int nbMonths;
 
     public MonthlyPayment (float capital, float rate, int nbMonths) {
             this.capital = capital;
@@ -35,4 +35,6 @@ public class MonthlyPayment {
         double result = Round.round(monthlyPayment, 2);
         return result;
     }
+
+
 }

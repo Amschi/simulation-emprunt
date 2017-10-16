@@ -8,9 +8,10 @@ import org.junit.Test;
 
 public class MonthlyPaymentTest {
 
-    float capital = 100000;
-    float rate = 12f;
-    int nbMonths = 120;
+    float capital;
+    float rate;
+    int nbMonths;
+
     MonthlyPayment monthlyPayment = new MonthlyPayment(capital, rate, nbMonths);
 
 
@@ -35,7 +36,6 @@ public class MonthlyPaymentTest {
     public void should_return_rate_entered_by_clients () {
         // GIVEN
 
-
         // WHEN
 
         // THEN
@@ -52,15 +52,45 @@ public class MonthlyPaymentTest {
         assertThat(monthlyPayment.getNbMonths()).isEqualTo(nbMonths);
     }
 
+
     @Test
-    public void name () {
+    public void should_return_monthly_payment_of_1434_with_param_US1 () {
         // GIVEN
         double result = 1434.71;
+        float capital = 100000f;
+        float rate = 12f;
+        int nbMonths = 120;
         // WHEN
 
         // THEN
         assertThat(monthlyPayment.calculateMonthlyPayment(capital,rate,nbMonths)).isEqualTo(result);
     }
+
+    @Test
+    public void should_return_monthly_payment_of_717_with_param_US1 () {
+        // GIVEN
+        double result = 717.35;
+        float capital = 50000f;
+        float rate = 12f;
+        int nbMonths = 120;
+        // WHEN
+
+        // THEN
+        assertThat(monthlyPayment.calculateMonthlyPayment(capital,rate,nbMonths)).isEqualTo(result);
+    }
+
+    @Test
+    public void name () {
+        // GIVEN
+
+        // WHEN
+
+        // THEN
+        assertThat(monthlyPayment.calculateMonthlyPayment(capital,rate,nbMonths)).isEqualTo(result);
+    }
+
+
+
 
 
 
