@@ -1,23 +1,57 @@
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
+
 
 
 
 public class MonthlyPaymentTest {
 
+    float capital = 100000;
+    float rate = 12f;
+    int nbMonths = 120;
+    MonthlyPayment monthlyPayment = new MonthlyPayment(capital, rate, nbMonths);
+
+
+
+
     @Test
-    public void name () {
+    public void should_return_capital_entered_by_clients () {
 
         //GIVEN
 
+
         //WHEN
 
+
         //THEN
-        assertThat(account.getBalance()).isExactlyInstanceOf(Float.class);
+        assertThat(monthlyPayment.getCapital()).isEqualTo(capital);
 
     }
+
+
+    @Test
+    public void should_return_rate_entered_by_clients () {
+        // GIVEN
+
+
+        // WHEN
+
+        // THEN
+        assertThat(monthlyPayment.getRate()).isEqualTo(rate);
+    }
+
+    @Test
+    public void should_return_months_entered_by_clients () {
+        // GIVEN
+
+        // WHEN
+
+        // THEN
+        assertThat(monthlyPayment.getNbMonths()).isEqualTo(nbMonths);
+    }
+
 
 
 
