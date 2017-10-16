@@ -38,7 +38,7 @@ public class LoanSimulationTest {
         // WHEN
 
         // THEN
-        assertThat(loanSimulation.getRate()).isEqualTo(rate);
+        assertThat(loanSimulation.getAnualRate()).isEqualTo(rate);
     }
 
     @Test
@@ -79,7 +79,7 @@ public class LoanSimulationTest {
     }
 
     @Test
-    public void name () {
+    public void should_return_total_loan_payment_with_param_US2 () {
         // GIVEN
         double monthlyPayment = 1434.71;
         int nbMonths = 120;
@@ -91,8 +91,45 @@ public class LoanSimulationTest {
     }
 
 
+    public void name () {
 
+        // GIVEN
+        double monthlyPayment = 1434.71;
+        int nbMonths = 120;
+        double result = 172165.2;
+        String expectedDisplay = "Months || Interest || Repayment || Capital \n"
+                + "---- || --- || ---- || 100000\n"
+                + "1 || 1000 || 434.71 || 99565.29\n"
+                + "2 || 995.65 || 439.06 || 99126.23\n";
 
+        // WHEN
 
+        // THEN
+        assertThat(loanSimulation.displaySpreadingCost()).isEqualTo(expectedDisplay);
+    }
+
+    @Test
+    public void should_return_interest_of_the_first_months () {
+        // GIVEN
+        double monthlyRate = 0.01;
+        double interestResult = 1000;
+        int capital = 100000;
+        // WHEN
+
+        // THEN
+        assertThat(loanSimulation.calculateInterest(monthlyRate, capital)).isEqualTo(interestResult);
+    }
+
+    @Test
+    public void should_return_interest_of_the_second_months () {
+        // GIVEN
+        double monthlyRate = 0.01;
+        double interestResult = 995.65;
+        int capital = 100000;
+        // WHEN
+
+        // THEN
+        assertThat(loanSimulation.calculateInterest(monthlyRate, capital)).isEqualTo(interestResult);
+    }
 
 }

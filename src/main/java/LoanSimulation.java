@@ -19,13 +19,19 @@ public class LoanSimulation {
         return capital;
     }
 
-    public float getRate() {
+    public float getAnualRate() {
         return rate;
+    }
+
+
+    public float getMonthlyRate() {
+        return getAnualRate()/1200;
     }
 
     public int getNbMonths() {
         return nbMonths;
     }
+
 
     public double calculateMonthlyPayment(float capital, float rate, int nbMonths) {
         double monthlyPayment;
@@ -39,5 +45,20 @@ public class LoanSimulation {
 
     public double calculateLoanCost(double monthlyPayment, int nbMonths) {
         return monthlyPayment * nbMonths;
+    }
+
+    public boolean displaySpreadingCost() {
+         return true;
+    }
+
+
+    public double calculateInterest(double monthlyRate, double capital) {
+
+        for(int i = 0; i < getNbMonths(); i++) {
+
+
+            double interest = monthlyRate * capital;
+            return interest;
+        }
     }
 }
