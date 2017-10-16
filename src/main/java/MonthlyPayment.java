@@ -1,3 +1,5 @@
+import java.math.*;
+
 public class MonthlyPayment {
 
 
@@ -23,5 +25,14 @@ public class MonthlyPayment {
 
     public int getNbMonths() {
         return nbMonths;
+    }
+
+    public double calculateMonthlyPayment(float capital, float rate, int nbMonths) {
+        double monthlyPayment;
+        double monthlyRate = rate/1200;
+
+        monthlyPayment = (capital*monthlyRate) / (1 - (Math.pow(1 + monthlyRate, - nbMonths)));
+        double result = Round.round(monthlyPayment, 2);
+        return result;
     }
 }

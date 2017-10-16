@@ -52,6 +52,15 @@ public class MonthlyPaymentTest {
         assertThat(monthlyPayment.getNbMonths()).isEqualTo(nbMonths);
     }
 
+    @Test
+    public void name () {
+        // GIVEN
+        double result = 1434.71;
+        // WHEN
+
+        // THEN
+        assertThat(monthlyPayment.calculateMonthlyPayment(capital,rate,nbMonths)).isEqualTo(result);
+    }
 
 
 
