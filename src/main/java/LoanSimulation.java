@@ -8,11 +8,10 @@ public class LoanSimulation {
     private int nbMonths;
 
     public LoanSimulation(float capital, float rate, int nbMonths) {
-            this.capital = capital;
-            this.rate = rate;
-            this.nbMonths = nbMonths;
+        this.capital = capital;
+        this.rate = rate;
+        this.nbMonths = nbMonths;
     }
-
 
 
     public float getCapital() {
@@ -25,7 +24,7 @@ public class LoanSimulation {
 
 
     public float getMonthlyRate() {
-        return getAnualRate()/1200;
+        return getAnualRate() / 1200;
     }
 
     public int getNbMonths() {
@@ -35,9 +34,9 @@ public class LoanSimulation {
 
     public double calculateMonthlyPayment(float capital, float rate, int nbMonths) {
         double monthlyPayment;
-        double monthlyRate = rate/1200;
+        double monthlyRate = rate / 1200;
 
-        monthlyPayment = (capital*monthlyRate) / (1 - (Math.pow(1 + monthlyRate, - nbMonths)));
+        monthlyPayment = (capital * monthlyRate) / (1 - (Math.pow(1 + monthlyRate, -nbMonths)));
         double result = Round.round(monthlyPayment, 2);
         return result;
     }
@@ -48,17 +47,16 @@ public class LoanSimulation {
     }
 
     public boolean displaySpreadingCost() {
-         return true;
+        return true;
     }
 
 
     public double calculateInterest(double monthlyRate, double capital) {
 
-        for(int i = 0; i < getNbMonths(); i++) {
 
-
-            double interest = monthlyRate * capital;
-            return interest;
-        }
+        double interest = monthlyRate * capital;
+        return interest;
     }
+
+
 }
