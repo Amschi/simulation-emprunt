@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-    LoanSimulation monthlyPayment = new LoanSimulation(50000, 12f, 120);
+    LoanSimulation monthlyPayment = new LoanSimulation();
     double resultMonthlyPayment = monthlyPayment.calculateMonthlyPayment(50000,12f,120);
     double resultTotalLoan = monthlyPayment.calculateLoanCost(resultMonthlyPayment, 120);
 
