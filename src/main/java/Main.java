@@ -3,10 +3,10 @@ public class Main {
 
     LoanSimulation monthlyPayment = new LoanSimulation();
     double resultMonthlyPayment = monthlyPayment.calculateMonthlyPayment(50000,12f,120);
-    double resultTotalLoan = monthlyPayment.calculateLoanCost(resultMonthlyPayment, 120);
+    double resultTotalLoan = monthlyPayment.calculateLoanCost(50000, 12, 120);
 
     System.out.println("Vos mensualités sont de"+" "+ +resultMonthlyPayment+" "+ "pour un cout total de" +" "+resultTotalLoan);
-    
-    
+
+
     }
 }
