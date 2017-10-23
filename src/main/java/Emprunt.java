@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Emprunt {
 
@@ -7,12 +8,19 @@ public class Emprunt {
 
     private BigDecimal capital;
     private BigDecimal tauxAnnuel;
+    private BigDecimal tauxMensuel;
     private Integer nombreDeMois;
+    private static final Integer NB_MOIS_PAR_AN = 12;
+    private static final Integer POURCENTAGE = 100;
 
     public Emprunt(BigDecimal capital, BigDecimal tauxAnnuel, Integer nombreDeMois) {
         this.capital = capital;
         this.tauxAnnuel = tauxAnnuel;
         this.nombreDeMois = nombreDeMois;
+    }
+
+    public BigDecimal getTauxMensuel () {
+        return tauxAnnuel.divide(BigDecimal.valueOf(NB_MOIS_PAR_AN * POURCENTAGE), 10, RoundingMode.HALF_DOWN);
     }
 
     public BigDecimal getCapital() {
