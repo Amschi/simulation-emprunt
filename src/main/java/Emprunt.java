@@ -2,15 +2,17 @@ import java.math.BigDecimal;
 
 public class Emprunt {
 
-    private  BigDecimal capital;
-    private  BigDecimal tauxAnnuel;
-    private  Integer nombreDeMois;
+    public static final BigDecimal TAUX_MIN = BigDecimal.ZERO;
+    public static final BigDecimal TAUX_MAX = new BigDecimal(100);
+
+    private BigDecimal capital;
+    private BigDecimal tauxAnnuel;
+    private Integer nombreDeMois;
 
     public Emprunt(BigDecimal capital, BigDecimal tauxAnnuel, Integer nombreDeMois) {
         this.capital = capital;
         this.tauxAnnuel = tauxAnnuel;
         this.nombreDeMois = nombreDeMois;
-
     }
 
     public BigDecimal getCapital() {
@@ -26,18 +28,11 @@ public class Emprunt {
     }
 
 
-    public void isValid () {
-        if (nombreDeMois <= 0) {
-            throw new IllegalArgumentException("Nombre de mois doit etre positif");
-        }
-        if (tauxAnnuel.compareTo(BigDecimal.ZERO) < 0 ) {
-            throw new IllegalArgumentException("Taux annuel doit etre supérieur à 0");
-        }
-        if (tauxAnnuel.compareTo(new BigDecimal( 100 )) >=100) {
-            throw new IllegalArgumentException("Taux annuel doit etre inférieur à 99");
-        }
-        if (capital.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("Capital doit etre positif");
-        }
+    public Boolean isValid() {
+        return (nombreDeMois > 0 &&
+                tauxAnnuel.compareTo(TAUX_MIN) >= 0 &&
+                tauxAnnuel.compareTo(TAUX_MAX) < 0) &&
+                (capital.compareTo(BigDecimal.ZERO) > 0);
+
     }
 }
