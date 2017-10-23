@@ -1,4 +1,4 @@
-# Simulation Emprunt
+# Simulation EmpruntSimulationCalculator
 Application permettant de simuler le remboursement d'un emprunt à taux constant et mensualités constantes
 
 ## Besoin

@@ -1,22 +1,43 @@
 import java.math.BigDecimal;
-import static java.lang.Math.pow;
-
 
 public class Emprunt {
-    private static final Integer NB_MOIS_PAR_AN = 12;
-    private static final Integer POURCENTAGE = 100;
 
+    private  BigDecimal capital;
+    private  BigDecimal tauxAnnuel;
+    private  Integer nombreDeMois;
 
+    public Emprunt(BigDecimal capital, BigDecimal tauxAnnuel, Integer nombreDeMois) {
+        this.capital = capital;
+        this.tauxAnnuel = tauxAnnuel;
+        this.nombreDeMois = nombreDeMois;
 
-    public BigDecimal calculerMensualite(BigDecimal capital, BigDecimal tauxAnnuel, Integer nombreDeMois) {
-        BigDecimal tauxMensuel = tauxAnnuel.divide(BigDecimal.valueOf(NB_MOIS_PAR_AN * POURCENTAGE));
-        BigDecimal mensualite = (capital.multiply(tauxMensuel)) / (1 - (pow(1 + tauxMensuel, -nombreDeMois)));
-        return mensualite;
+    }
+
+    public BigDecimal getCapital() {
+        return capital;
+    }
+
+    public BigDecimal getTauxAnnuel() {
+        return tauxAnnuel;
+    }
+
+    public Integer getNombreDeMois() {
+        return nombreDeMois;
     }
 
 
-    public BigDecimal calculerCoutTotal(BigDecimal capital, BigDecimal tauxAnnuel, Integer nombreDeMois) {
-        BigDecimal coutTotal = calculerMensualite(capital, tauxAnnuel, nombreDeMois).multiply(BigDecimal.valueOf(nombreDeMois));
-        return coutTotal;
+    public void isValid () {
+        if (nombreDeMois <= 0) {
+            throw new IllegalArgumentException("Nombre de mois doit etre positif");
+        }
+        if (tauxAnnuel.compareTo(BigDecimal.ZERO) < 0 ) {
+            throw new IllegalArgumentException("Taux annuel doit etre supérieur à 0");
+        }
+        if (tauxAnnuel.compareTo(new BigDecimal( 100 )) >=100) {
+            throw new IllegalArgumentException("Taux annuel doit etre inférieur à 99");
+        }
+        if (capital.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Capital doit etre positif");
+        }
     }
 }
