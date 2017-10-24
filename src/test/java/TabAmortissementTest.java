@@ -1,48 +1,35 @@
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+
 public class TabAmortissementTest {
 
-    TabAmortissement tabAmortissement;
+    TabAmortissementCalculateur tabAmortissementCalculateur;
+    LigneTabAmortissement ligneTabAmortissement;
 
     @Before
     public void setUp() {
-        tabAmortissement = new TabAmortissement();
+        tabAmortissementCalculateur = new TabAmortissementCalculateur();
+        Emprunt emprunt = new Emprunt(BigDecimal.valueOf(100_000), BigDecimal.valueOf(12), 120);
+        ligneTabAmortissement = new LigneTabAmortissement(emprunt, 0, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
     }
 
 
     @Test
-    public void affichageTabAmortissement_should_return_premiere_ligne_tableau() {
+    public void calculerInteret_should_return_1000() {
         // GIVEN
-        Emprunt emprunt = new Emprunt(BigDecimal.valueOf(100_000), BigDecimal.valueOf(12), 120);
-        String expectedAffichage = "Mois || Interet || Remboursement || Capital restant \n"
-                                    + "1 || 1000 || 434.71 || 99565.29\n";
+        BigDecimal expected = BigDecimal.valueOf(1000);
 
         // WHEN
-        String affichageTabAmortissement = tabAmortissement.affichageTabAmortissement(emprunt);
+        BigDecimal interet = tabAmortissementCalculateur.calculerInteret(ligneTabAmortissement).setScale(0, RoundingMode.HALF_DOWN);
 
         // THEN
-        assertThat(affichageTabAmortissement).isEqualTo(expectedAffichage);
+        assertThat(interet).isEqualTo(expected);
     }
 
-    @Test
-    public void name() {
-        // GIVEN
-        Emprunt emprunt = new Emprunt(BigDecimal.valueOf(100_000), BigDecimal.valueOf(12), 120);
-        String expectedAffichage = "Mois || Interet || Remboursement || Capital restant \n"
-                                    + "1 || 1000 || 434.71 || 99565.29\n"
-                                    + "2 || 995.65 || 439.06 || 99126.23\n";
-
-        // WHEN
-        String affichageTabAmortissement = tabAmortissement.affichageTabAmortissement(emprunt);
-
-        // THEN
-        assertThat(affichageTabAmortissement).isEqualTo(expectedAffichage);
-    }
 
 }

@@ -6,16 +6,17 @@ public class TabAmortissementCalculateur {
 
     EmpruntSimulationCalculator empruntSimulationCalculator = new EmpruntSimulationCalculator();
 
-    public BigDecimal calculerInteret(Emprunt emprunt) {
-        return emprunt.getCapital().multiply(emprunt.getTauxMensuel());
+
+    public BigDecimal calculerInteret(LigneTabAmortissement ligneTabAmortissement) {
+        return ligneTabAmortissement.emprunt.getCapital().multiply(ligneTabAmortissement.emprunt.getTauxMensuel());
     }
 
-    public BigDecimal calculerRemboursement(Emprunt emprunt) {
-        return empruntSimulationCalculator.calculerMensualite(emprunt).subtract(calculerInteret(emprunt));
+    public BigDecimal calculerRemboursement(LigneTabAmortissement ligneTabAmortissement) {
+        return empruntSimulationCalculator.calculerMensualite(ligneTabAmortissement.emprunt).subtract(calculerInteret(ligneTabAmortissement));
     }
 
-    public BigDecimal calculerCapitalRestant(Emprunt emprunt) {
-        return emprunt.getCapital().subtract(calculerRemboursement(emprunt));
+    public BigDecimal calculerCapitalRestant(LigneTabAmortissement ligneTabAmortissement) {
+        return ligneTabAmortissement.emprunt.getCapital().subtract(calculerRemboursement(ligneTabAmortissement));
     }
 
 }
