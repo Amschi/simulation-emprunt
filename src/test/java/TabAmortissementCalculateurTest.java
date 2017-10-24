@@ -55,18 +55,5 @@ public class TabAmortissementCalculateurTest {
         assertThat(capitalRestant).isEqualTo(expected);
     }
 
-    @Test
-    public void calculerInteret_should_return_995_65() {
-        // GIVEN
-        Emprunt emprunt = new Emprunt(BigDecimal.valueOf(99565.29), BigDecimal.valueOf(12), 120);
-        BigDecimal expected = BigDecimal.valueOf(995.65);
-
-        // WHEN
-        BigDecimal interet = tabAmortissementCalculateur.calculerInteret(emprunt).setScale(2, RoundingMode.HALF_DOWN);
-
-        // THEN
-        assertThat(interet).isEqualTo(expected);
-    }
-
 
 }
