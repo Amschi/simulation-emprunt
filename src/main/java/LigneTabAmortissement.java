@@ -6,16 +6,14 @@ import java.util.List;
 
 public class LigneTabAmortissement {
 
-    TabAmortissementCalculateur tabAmortissementCalculateur;
-    private Integer mois;
-    private BigDecimal interet;
-    private BigDecimal remboursement;
-    private BigDecimal capitalRestant;
-    public Emprunt emprunt;
+
+    private final Integer mois;
+    private final BigDecimal interet;
+    private final BigDecimal remboursement;
+    private final BigDecimal capitalRestant;
 
 
-    public LigneTabAmortissement(Emprunt emprunt, Integer mois, BigDecimal interet, BigDecimal remboursement, BigDecimal capitalRestant) {
-        this.emprunt = emprunt;
+    public LigneTabAmortissement(Integer mois, BigDecimal interet, BigDecimal remboursement, BigDecimal capitalRestant) {
         this.mois = mois;
         this.interet = interet;
         this.remboursement = remboursement;
@@ -23,13 +21,13 @@ public class LigneTabAmortissement {
     }
 
 
-    public Emprunt getEmprunt() { return emprunt; }
-
     public Integer getMois() {
         return mois;
     }
 
-    public BigDecimal getInteret() { return interet; }
+    public BigDecimal getInteret() {
+        return interet;
+    }
 
     public BigDecimal getRemboursement() {
         return remboursement;
