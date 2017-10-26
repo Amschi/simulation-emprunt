@@ -16,7 +16,7 @@ public class TabAmortissementCalculateur {
             BigDecimal interet = calculerInteret(capitalRestantDu, emprunt.getTauxMensuel());
             BigDecimal remboursement = calculerRemboursement(mensualite, interet);
 
-            LigneTabAmortissement ligneTabAmortissement = new LigneTabAmortissement(i + 1, calculerInteret(capitalRestantDu, emprunt.getTauxMensuel()), calculerRemboursement(mensualite, interet), calculerCapitalRestant(capitalRestantDu, remboursement));
+            LigneTabAmortissement ligneTabAmortissement = new LigneTabAmortissement(i + 1, calculerInteret(capitalRestantDu, emprunt.getTauxMensuel()).setScale(20, RoundingMode.HALF_EVEN), calculerRemboursement(mensualite, interet).setScale(20, RoundingMode.HALF_EVEN), calculerCapitalRestant(capitalRestantDu, remboursement).setScale(20, RoundingMode.HALF_EVEN));
             tabAmortissement.getLigneTabAmortissements().add(ligneTabAmortissement);
             capitalRestantDu = capitalRestantDu.subtract(tabAmortissement.getLigneTabAmortissements().get(i).getRemboursement());
         }
@@ -25,11 +25,11 @@ public class TabAmortissementCalculateur {
 
 
     public BigDecimal calculerInteret(BigDecimal capitalRestantDu, BigDecimal tauxMensuel) {
-        return capitalRestantDu.multiply(tauxMensuel).setScale(2, RoundingMode.HALF_DOWN);
+        return capitalRestantDu.multiply(tauxMensuel);
     }
 
     public BigDecimal calculerRemboursement(BigDecimal mensualite, BigDecimal interet) {
-        return mensualite.subtract(interet).setScale(2, RoundingMode.HALF_DOWN);
+        return mensualite.subtract(interet);
     }
 
     public BigDecimal calculerCapitalRestant(BigDecimal capitalRestantDu, BigDecimal remboursement) {

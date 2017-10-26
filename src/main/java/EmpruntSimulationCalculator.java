@@ -9,8 +9,8 @@ public class EmpruntSimulationCalculator {
         validerEmprunt(emprunt);
 
         BigDecimal dividende = emprunt.getCapital().multiply(emprunt.getTauxMensuel());
-        BigDecimal diviseur = BigDecimal.ONE.subtract(BigDecimal.ONE.divide((BigDecimal.ONE.add(emprunt.getTauxMensuel())).pow(emprunt.getNombreDeMois()), 10, RoundingMode.HALF_DOWN));
-        return dividende.divide(diviseur, 10, RoundingMode.HALF_DOWN);
+        BigDecimal diviseur = BigDecimal.ONE.subtract(BigDecimal.ONE.divide((BigDecimal.ONE.add(emprunt.getTauxMensuel())).pow(emprunt.getNombreDeMois()),20, BigDecimal.ROUND_HALF_EVEN));
+        return dividende.divide(diviseur, 20, BigDecimal.ROUND_HALF_EVEN);
     }
 
     public BigDecimal calculerCoutTotal(Emprunt emprunt) {

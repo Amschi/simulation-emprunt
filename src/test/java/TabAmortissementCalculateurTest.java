@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -26,9 +27,9 @@ public class TabAmortissementCalculateurTest {
         // THEN
         LigneTabAmortissement ligneTabAmortissement = tabAmortissement.getLigneTabAmortissements().get(0);
         assertThat(ligneTabAmortissement.getMois()).isEqualTo(1);
-        assertThat(ligneTabAmortissement.getInteret()).isEqualTo(BigDecimal.valueOf(1000).setScale(2));
-        assertThat(ligneTabAmortissement.getRemboursement()).isEqualTo(BigDecimal.valueOf(434.71));
-        assertThat(ligneTabAmortissement.getCapitalRestant()).isEqualTo(BigDecimal.valueOf(99565.29));
+        assertThat(ligneTabAmortissement.getInteret().setScale(0)).isEqualTo(BigDecimal.valueOf(1000));
+        assertThat(ligneTabAmortissement.getRemboursement().setScale(2, RoundingMode.HALF_EVEN)).isEqualTo(BigDecimal.valueOf(434.71));
+        assertThat(ligneTabAmortissement.getCapitalRestant().setScale(2, RoundingMode.HALF_EVEN)).isEqualTo(BigDecimal.valueOf(99565.29));
 
     }
 
@@ -42,9 +43,9 @@ public class TabAmortissementCalculateurTest {
         // THEN
         LigneTabAmortissement ligneTabAmortissement = tabAmortissement.getLigneTabAmortissements().get(1);
         assertThat(ligneTabAmortissement.getMois()).isEqualTo(2);
-        assertThat(ligneTabAmortissement.getInteret()).isEqualTo(BigDecimal.valueOf(995.65));
-        assertThat(ligneTabAmortissement.getRemboursement()).isEqualTo(BigDecimal.valueOf(439.06));
-        assertThat(ligneTabAmortissement.getCapitalRestant()).isEqualTo(BigDecimal.valueOf(99126.23));
+        assertThat(ligneTabAmortissement.getInteret().setScale(2, RoundingMode.HALF_EVEN)).isEqualTo(BigDecimal.valueOf(995.65));
+        assertThat(ligneTabAmortissement.getRemboursement().setScale(2, RoundingMode.HALF_EVEN)).isEqualTo(BigDecimal.valueOf(439.06));
+        assertThat(ligneTabAmortissement.getCapitalRestant().setScale(2, RoundingMode.HALF_EVEN)).isEqualTo(BigDecimal.valueOf(99126.23));
     }
 
     @Test
@@ -56,8 +57,9 @@ public class TabAmortissementCalculateurTest {
         // THEN
         LigneTabAmortissement ligneTabAmortissement = tabAmortissement.getLigneTabAmortissements().get(2);
         assertThat(ligneTabAmortissement.getMois()).isEqualTo(3);
-        assertThat(ligneTabAmortissement.getInteret()).isEqualTo(BigDecimal.valueOf(991.26));
-        assertThat(ligneTabAmortissement.getRemboursement()).isEqualTo(BigDecimal.valueOf(443.45));
-        assertThat(ligneTabAmortissement.getCapitalRestant()).isEqualTo(BigDecimal.valueOf(98682.79).setScale(2));
+        assertThat(ligneTabAmortissement.getInteret().setScale(2, RoundingMode.HALF_EVEN)).isEqualTo(BigDecimal.valueOf(991.26));
+        assertThat(ligneTabAmortissement.getRemboursement().setScale(2, RoundingMode.HALF_EVEN)).isEqualTo(BigDecimal.valueOf(443.45).setScale(2, RoundingMode.HALF_EVEN));
+        assertThat(ligneTabAmortissement.getCapitalRestant().setScale(2, RoundingMode.HALF_EVEN)).isEqualTo(BigDecimal.valueOf(98682.79));
     }
+
 }

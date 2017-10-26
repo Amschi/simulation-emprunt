@@ -7,29 +7,31 @@ import java.math.RoundingMode;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class TabAmortissementTest {
-//
-//    TabAmortissementCalculateur tabAmortissementCalculateur;
-//    LigneTabAmortissement ligneTabAmortissement;
-//
-//    @Before
-//    public void setUp() {
-//        tabAmortissementCalculateur = new TabAmortissementCalculateur();
-//        Emprunt emprunt = new Emprunt(BigDecimal.valueOf(100_000), BigDecimal.valueOf(12), 120);
-//        ligneTabAmortissement = new LigneTabAmortissement(emprunt, 0, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
-//    }
-//
-//
-//    @Test
-//    public void calculerInteret_should_return_1000() {
-//        // GIVEN
-//        BigDecimal expected = BigDecimal.valueOf(1000);
-//
-//        // WHEN
-//        BigDecimal interet = tabAmortissementCalculateur.calculerInteret(ligneTabAmortissement).setScale(0, RoundingMode.HALF_DOWN);
-//
-//        // THEN
-//        assertThat(interet).isEqualTo(expected);
-//    }
 
+
+    TabAmortissement tabAmortissement;
+    TabAmortissementCalculateur tabAmortissementCalculateur;
+
+    @Before
+    public void setUp() {
+        tabAmortissement = new TabAmortissement();
+        tabAmortissementCalculateur = new TabAmortissementCalculateur();
+
+    }
+
+    @Test
+    public void affichageTabAmortissement_should_return_premiere_ligne_tableau() {
+        // GIVEN
+        Emprunt emprunt = new Emprunt(BigDecimal.valueOf(100_000), BigDecimal.valueOf(12), 120);
+        String expectedAffichage = "Mois || Interet || Remboursement || Capital restant \n" + "1 || 1000.00 || 434.71 || 99565.29";
+
+        //WHEN
+        tabAmortissement = tabAmortissementCalculateur.calculer(emprunt);
+
+        String affichageTabAmortissement = tabAmortissement.affichageTabAmortissement();
+
+        //THEN
+        assertThat(affichageTabAmortissement).isEqualTo(expectedAffichage);
+    }
 
 }

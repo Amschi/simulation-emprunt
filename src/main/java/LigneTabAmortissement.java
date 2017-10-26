@@ -36,4 +36,9 @@ public class LigneTabAmortissement {
     public BigDecimal getCapitalRestant() {
         return capitalRestant;
     }
+
+    @Override
+    public String toString() {
+        return + mois + "||" + interet.setScale(2, RoundingMode.HALF_EVEN) + "||" + remboursement.setScale(2, RoundingMode.HALF_EVEN) + "||" + capitalRestant.setScale(2, RoundingMode.HALF_EVEN) + "\n" ;
+    }
 }
