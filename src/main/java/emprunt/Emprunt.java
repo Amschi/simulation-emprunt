@@ -1,5 +1,7 @@
 package emprunt;
 
+import org.springframework.context.annotation.Bean;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -21,7 +23,7 @@ public class Emprunt {
         this.nombreDeMois = nombreDeMois;
     }
 
-    public BigDecimal getTauxMensuel () {
+    public BigDecimal getTauxMensuel() {
         return tauxAnnuel.divide(BigDecimal.valueOf(NB_MOIS_PAR_AN * POURCENTAGE), 10, RoundingMode.HALF_DOWN);
     }
 
@@ -39,10 +41,7 @@ public class Emprunt {
 
 
     public Boolean isValid() {
-        return (nombreDeMois > 0 &&
-                tauxAnnuel.compareTo(TAUX_MIN) >= 0 &&
-                tauxAnnuel.compareTo(TAUX_MAX) < 0) &&
-                (capital.compareTo(BigDecimal.ZERO) > 0);
+        return (nombreDeMois > 0 && tauxAnnuel.compareTo(TAUX_MIN) >= 0 && tauxAnnuel.compareTo(TAUX_MAX) < 0) && (capital.compareTo(BigDecimal.ZERO) > 0);
 
     }
 }
