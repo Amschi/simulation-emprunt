@@ -1,3 +1,5 @@
+import emprunt.Emprunt;
+import emprunt.EmpruntSimulationCalculator;
 import org.junit.Before;
 import org.junit.Test;
 

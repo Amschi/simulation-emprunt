@@ -1,3 +1,7 @@
+import emprunt.Emprunt;
+import emprunt.LigneTabAmortissement;
+import emprunt.TabAmortissement;
+import emprunt.TabAmortissementCalculateur;
 import org.junit.Before;
 import org.junit.Test;
 
