@@ -1,8 +1,10 @@
 package emprunt;
 
+import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 
-
+@Service
 public class EmpruntSimulationCalculator {
 
     public BigDecimal calculerMensualite(Emprunt emprunt) {

@@ -10,6 +10,7 @@ public class Emprunt {
     public static final BigDecimal TAUX_MIN = BigDecimal.ZERO;
     public static final BigDecimal TAUX_MAX = new BigDecimal(100);
 
+
     private BigDecimal capital;
     private BigDecimal tauxAnnuel;
     private BigDecimal tauxMensuel;
@@ -22,6 +23,7 @@ public class Emprunt {
         this.tauxAnnuel = tauxAnnuel;
         this.nombreDeMois = nombreDeMois;
     }
+
 
     public BigDecimal getTauxMensuel() {
         return tauxAnnuel.divide(BigDecimal.valueOf(NB_MOIS_PAR_AN * POURCENTAGE), 10, RoundingMode.HALF_DOWN);

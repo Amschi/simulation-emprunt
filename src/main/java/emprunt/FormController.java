@@ -1,24 +1,36 @@
 package emprunt;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Map;
 
 @Controller
 public class FormController {
 
-    // inject via application.properties
-    @Value("${welcome.message:test}")
-    private String message = "Hello World";
+    @Autowired
+    private EmpruntSimulationCalculator empruntSimulationCalculator;
 
-    @RequestMapping("/")
-    public String welcome(Map<String, Object> model) {
-        model.put("message", this.message);
+    @GetMapping("/welcome")
+    public String empruntForm(Model model) {
+        model.addAttribute("empruntPost", new EmpruntPost());
         return "welcome";
+    }
+
+    @PostMapping("/welcome")
+    public String empruntSubmit(@ModelAttribute EmpruntPost empruntPost, Model model) {
+
+        Emprunt emprunt = new Emprunt(empruntPost.getCapital(), empruntPost.getTauxAnnuel(), empruntPost.getNombreDeMois());
+
+        model.addAttribute("mensualite", empruntSimulationCalculator.calculerMensualite(emprunt).setScale(2, RoundingMode.HALF_EVEN));
+
+        return "result";
     }
 
 

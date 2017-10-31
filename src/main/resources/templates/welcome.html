@@ -37,6 +37,18 @@
     </div>
 
 </div>
+
+
+<form action="#" th:action="@{/welcome}" th:object="${empruntPost}" method="post">
+    <p>Capital: <input type="text" th:field="*{capital}" /></p>
+    <p>Taux Annuel: <input type="text" th:field="*{tauxAnnuel}" /></p>
+    <p>Nombre de mois: <input type="text" th:field="*{nombreDeMois}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+
+</form>
+
+
+
 <!-- /.container -->
 
 <script type="text/javascript"
