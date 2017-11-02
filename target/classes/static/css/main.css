@@ -1,7 +1,26 @@
-h1{
-    color:#0000FF;
+
+
+.form-control {
+    width:8%;
 }
 
-h2{
-    color:#FF0000;
+#form- {
+    margin-left:25%;
+}
+
+#resultat {
+    margin-left: 25%;
+}
+#titre-resultat {
+    border: solid;
+    padding-left: 0.5%;
+    margin-right:70%;
+}
+
+.body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
 }

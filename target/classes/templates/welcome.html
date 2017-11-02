@@ -1,52 +1,54 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Boot Thymeleaf Hello World Example</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Simulation credit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" type="text/css"
-          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
     <link rel="stylesheet" th:href="@{/css/main.css}"
-          href="../../css/main.css" />
+          href="../../css/main.css"/>
 
 </head>
 <body>
 
 <nav class="navbar navbar-inverse">
     <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Spring Boot</a>
-        </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li class="navbar-brand">Calculateur d'emprunt</li>
+                <li class="active"><a href="/">Home</a></li>
+
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container">
 
-    <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
-        <h2>
-            <span th:text="'Message: ' + ${message}"></span>
-        </h2>
+<form id="form-" action="#" th:action="@{/welcome}" th:object="${empruntPost}" method="post">
+
+
+    <div class="form-group">
+        <label for="capital">Capital</label>
+        <input type="text" class="form-control" id="capital" th:field="*{capital}"/>
     </div>
 
-</div>
+
+    <div class="form-group">
+        <label for="tauxannuel">Taux Annuel</label>
+        <input type="text" class="form-control" id="tauxannuel" th:field="*{tauxAnnuel}"/>
+    </div>
+
+    <div class="form-group">
+        <label for="nbMois">Nombre de mois</label>
+        <input type="text" class="form-control" id="nbMois" th:field="*{nombreDeMois}"/>
+    </div>
 
 
-<form action="#" th:action="@{/welcome}" th:object="${empruntPost}" method="post">
-    <p>Capital: <input type="text" th:field="*{capital}" /></p>
-    <p>Taux Annuel: <input type="text" th:field="*{tauxAnnuel}" /></p>
-    <p>Nombre de mois: <input type="text" th:field="*{nombreDeMois}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-
+    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="reset" class="btn btn-default">Reset</button>
 </form>
-
 
 
 <!-- /.container -->

@@ -17,7 +17,7 @@ public class FormController {
     @Autowired
     private EmpruntSimulationCalculator empruntSimulationCalculator;
 
-    @GetMapping("/welcome")
+    @GetMapping("/")
     public String empruntForm(Model model) {
         model.addAttribute("empruntPost", new EmpruntPost());
         return "welcome";
@@ -29,6 +29,7 @@ public class FormController {
         Emprunt emprunt = new Emprunt(empruntPost.getCapital(), empruntPost.getTauxAnnuel(), empruntPost.getNombreDeMois());
 
         model.addAttribute("mensualite", empruntSimulationCalculator.calculerMensualite(emprunt).setScale(2, RoundingMode.HALF_EVEN));
+        model.addAttribute("coutTotal", empruntSimulationCalculator.calculerCoutTotal(emprunt).setScale(2, RoundingMode.HALF_EVEN));
 
         return "result";
     }
